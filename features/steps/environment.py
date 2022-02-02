@@ -10,7 +10,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 import time
 
-options = Options()
+options = webdriver.ChromeOptions()
 options.headless = False
 options.add_argument("--disable-notifications")
 options.add_argument('--start-maximized')
