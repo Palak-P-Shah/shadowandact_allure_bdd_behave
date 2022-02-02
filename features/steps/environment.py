@@ -12,7 +12,10 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 
 options = webdriver.ChromeOptions()
-options.headless = False
+# change this to True
+# options.headless = False
+options.headless = True
+options.add_argument('--no-sandbox')
 options.add_argument("--disable-notifications")
 options.add_argument('--start-maximized')
 # options.add_argument("--headless")
