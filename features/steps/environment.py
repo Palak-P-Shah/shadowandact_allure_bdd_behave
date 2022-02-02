@@ -24,9 +24,19 @@ options.add_argument('user-agent={0}'.format(user_agent))
 # use this code below to execute headless state
 # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # driver = webdriver.Chrome(ChromeDriverManager().install()) for blavity deployment
+# for desktop execution
 # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
+
+# for linux debian
+# tried this getting error as "The process started from chrome location /usr/bin/chromium is no longer running,
+# so ChromeDriver is assuming that Chrome has crashed.)"
+# driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
+
+driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
 url_name = "https://staging.shadowandact.com/"
+
+
+
 
 
 def environment():
