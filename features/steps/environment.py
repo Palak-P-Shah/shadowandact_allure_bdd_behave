@@ -1,5 +1,6 @@
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
@@ -23,8 +24,8 @@ options.add_argument('user-agent={0}'.format(user_agent))
 # use this code below to execute headless state
 # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # driver = webdriver.Chrome(ChromeDriverManager().install()) for blavity deployment
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-
+# driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
 url_name = "https://staging.shadowandact.com/"
 
 
