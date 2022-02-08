@@ -428,7 +428,7 @@ def verify_post_click_more_originals_number_comparison():
 
 def verify_other_trending_black_news():
     print("inside function verify_other_trending_black_news")
-    other_trending_header = driver.find_element(By.XPATH, "//h2[normalize-space()='Other Trending Black News']")
+    other_trending_header = driver.find_element(By.XPATH, "//h2[contains(text(),'Other Trending Black News')]")
     actions = ActionChains(driver)
     actions.move_to_element(other_trending_header).perform()
     assert other_trending_header.is_displayed(), "header is not present for 'Other Trending Black News'"
