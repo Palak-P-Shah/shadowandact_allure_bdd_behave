@@ -35,7 +35,9 @@ options.add_argument('user-agent={0}'.format(user_agent))
 # so ChromeDriver is assuming that Chrome has crashed.)"
 # driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
 
+# for linux debian working on debian 10 linux.
 driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
+
 url_name = "https://staging.shadowandact.com/"
 
 

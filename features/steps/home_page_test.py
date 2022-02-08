@@ -35,8 +35,8 @@ def verify_carousel_articles_and_arrows():
           By.XPATH,
           "(//div[@class='home-hero-card__categories'])["+temp_string+"]")
         print("categories for this article in Carousel are :- ", temp_categories.text)
-        assert temp_categories.text is not None and temp_categories.text != \
-               "", "No Categories are found for this article."
+        # assert temp_categories.text is not None and temp_categories.text != \
+        #        "", "No Categories are found for this article."
         temp_author = driver.find_element(
           By.XPATH,
           "//div[@class='home-hero-slider position-relative']"
