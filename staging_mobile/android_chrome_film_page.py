@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementNotVisibleException
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
@@ -18,7 +18,8 @@ desired_cap = {
   'browserName': 'Chrome',
   'browser_version': 'latest',
   'os': 'Android',
-  'name': 'BStack-[Python] Smoke Test for staging.shadowandact.com of film page is as expected on android phone chrome browser',
+  'name': 'BStack-[Python] Smoke Test for staging.shadowandact.com '
+          'of film page is as expected on android phone chrome browser',
   'build': 'BStack Build Number'
 }
 
@@ -112,8 +113,7 @@ def verify_number_of_articles(temp_variable):
     print("number of articles are :- ", len(temp_number))
     assert len(temp_number) > 0, "Articles are not present for " + temp_variable + " page"
     load_more_stories_button = driver.find_element(By.XPATH, "//button[normalize-space()='Load More Stories']")
-    actions = ActionChains(driver)
-    actions.move_to_element(load_more_stories_button).perform()
+    driver.execute_script("arguments[0].scrollIntoView();", load_more_stories_button)
     load_more_stories_button.click()
     time.sleep(2)
     WebDriverWait(driver, 40).until(ec.presence_of_element_located((
@@ -256,7 +256,8 @@ def set_status():
     print("Function called set Status")
     driver.execute_script(
       'browserstack_executor: {"action": "setSessionStatus", "arguments": '
-      '{"status":"passed", "reason": ", for android chrome, on staging.shadowandact.com Film Page do work as expected"}}')
+      '{"status":"passed", "reason": ", for android chrome, on '
+      'staging.shadowandact.com Film Page do work as expected"}}')
 
 
 environment()
