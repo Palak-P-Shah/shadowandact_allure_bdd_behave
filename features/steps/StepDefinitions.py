@@ -1,8 +1,57 @@
+import pytest
 from behave import *
 from common_pages import *
 from Navigation_test import *
 from rising_awards import *
 from home_page_test import *
+
+from allure_commons.types import AttachmentType
+
+# import allure
+# from selenium import webdriver
+#
+#
+# @pytest.hookimpl(hookwrapper=True, tryfirst=True)
+# def pytest_runtest_makereport(item, call):
+#     outcome = yield
+#     rep = outcome.get_result()
+#     setattr(item, "rep_" + rep.when, rep)
+#     return rep
+#
+#
+# @pytest.fixture(scope="function")
+# def web_browser(request):
+#     # Open browser:
+#     b = webdriver.PhantomJS(executable_path='/tests/phantomjs')
+#     b.set_window_size(1400, 1000)
+#
+#     # Return browser instance to test case:
+#     yield b
+#
+#     # Do teardown (this code will be executed after each test):
+#
+#     if request.node.rep_call.failed:
+#         # Make the screen-shot if test failed:
+#         try:
+#             b.execute_script("document.body.bgColor = 'white';")
+#
+#             allure.attach(b.get_screenshot_as_png(),
+#                           name=request.function.__name__,
+#                           attachment_type=allure.attachment_type.PNG)
+#         except:
+#             pass # just ignore
+#
+#     # Close browser window:
+#     b.quit()
+#
+#
+# def after_step(context):
+#     time.sleep(2)
+#     if step.status == "failed":
+#         allure.attach(context.browser.driver.get_screenshot_as_png(),
+#                       name='screenshot',
+#                       attachment_type=allure.attachment_type.PNG)
+#
 
 
 @given('url is launched')
