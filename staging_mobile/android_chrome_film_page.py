@@ -11,14 +11,14 @@ url_shadowandact = "https://staging.shadowandact.com/"
 BROWSERSTACK_USERNAME = 'palakshah_rcAxD5'
 BROWSERSTACK_ACCESS_KEY = 's2rqmyxFs8r999bzvGXJ'
 desired_cap = {
-  'os_version': '14',
-  'device': 'iPhone 12',
+  'os_version': '10.0',
+  'device': 'Google Pixel 3',
   'real_mobile': 'true',
   'browserstack.local': 'false',
-  'browserName': 'safari',
+  'browserName': 'Chrome',
   'browser_version': 'latest',
-  'os': 'iOS',
-  'name': 'BStack-[Python] Smoke Test for staging.shadowandact.com of film page is as expected on ios safari',
+  'os': 'Android',
+  'name': 'BStack-[Python] Smoke Test for staging.shadowandact.com of film page is as expected on android phone chrome browser',
   'build': 'BStack Build Number'
 }
 
@@ -41,8 +41,8 @@ def page_load():
     except TimeoutException:
         driver.execute_script(
           'browserstack_executor: {"action": "setSessionStatus", "arguments": '
-          '{"status":"failed", "reason": for shadowandact.com, for ios '
-          'safari, took too long but no response, checking title"}}')
+          '{"status":"failed", "reason": for staging.shadowandact.com, for android '
+          'chrome, took too long but no response, checking title"}}')
         driver.quit()
 
 
@@ -254,7 +254,7 @@ def set_status():
     print("Function called set Status")
     driver.execute_script(
       'browserstack_executor: {"action": "setSessionStatus", "arguments": '
-      '{"status":"passed", "reason": ", for ios safari, on staging.shadowandact.com Film Page do work as expected"}}')
+      '{"status":"passed", "reason": ", for android chrome, on staging.shadowandact.com Film Page do work as expected"}}')
 
 
 environment()
