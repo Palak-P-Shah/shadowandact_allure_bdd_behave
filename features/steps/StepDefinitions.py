@@ -54,6 +54,11 @@ from home_page_test import *
 #
 
 
+@given('the chrome browser is launched')
+def step_impl(context):
+    environment()
+
+
 @given('url is launched')
 def step_impl(context):
     environment()
@@ -62,6 +67,11 @@ def step_impl(context):
 @when('I am on shadowandact page')
 def step_impl(context):
     page_load()
+
+
+@then('verify the application is launched successfully')
+def step_impl(context):
+    post_page_load_pop_up()
 
 
 @then('check whether page is loaded')
@@ -132,6 +142,29 @@ def step_impl(context):
 @then('verify footer links are working as expected')
 def step_impl(context):
     verify_footer_links()
+
+
+@then('navigate to the Film page')
+def step_impl(context):
+    verify_particular_page("FILM")
+
+
+@then('verify if all the article links are working as expected on the Film page')
+def step_impl(context):
+    verify_each_article("FILM", "Film")
+
+
+@then('verify if the Load More stories button work as expected, also verify the links to the articles works as expected')
+def step_impl(context):
+    verify_number_of_articles("Film")
+    verify_each_article("FILM", "Film")
+
+
+@then('verify if the Load More stories button work as expected (the second time when clicked), also verify initial link of the article, after clicking load more twice do work as expected')
+def step_impl(context):
+    verify_number_of_articles("Film")
+    verify_number_of_articles("Film")
+    verify_each_article("FILM", "Film")
 
 
 @then('verify whether Film page is as required')
