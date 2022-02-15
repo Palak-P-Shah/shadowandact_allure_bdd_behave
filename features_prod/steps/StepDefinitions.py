@@ -1,11 +1,11 @@
-import pytest
+# import pytest
 from behave import *
 from common_pages import *
 from Navigation_test import *
 from rising_awards import *
 from home_page_test import *
 
-from allure_commons.types import AttachmentType
+# from allure_commons.types import AttachmentType
 
 # import allure
 # from selenium import webdriver
