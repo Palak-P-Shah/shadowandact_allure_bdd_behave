@@ -1,4 +1,4 @@
-Feature: Check Whether navigation links for shadowandact Website staging.shadowandact.com is appropriate
+Feature: Check Whether navigation links for shadowandact Website shadowandact.com is appropriate
 
   Scenario: To check whether nav bar links are as required
       Given url is launched

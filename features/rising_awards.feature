@@ -1,4 +1,4 @@
-Feature: Check Whether rising awards page for blavity Website ShadowAndAct.com is appropriate
+Feature: Check Whether rising awards page for blavity Website staging.ShadowAndAct.com is appropriate
 
   Scenario: To check whether Rising Awards page is as required
       Given url is launched

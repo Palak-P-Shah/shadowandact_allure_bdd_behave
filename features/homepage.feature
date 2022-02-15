@@ -1,6 +1,6 @@
-Feature: Home Page Verification for ShadowAndAct.com for navbar carousel and most popular
+Feature: Home Page Verification for staging.ShadowAndAct.com for navbar carousel and most popular
  
-  Scenario: Verify the different sections of the Home Page for ShadowAndAct.com for navbar carousel and most popular
+  Scenario: Verify the different sections of the Home Page for staging.ShadowAndAct.com for navbar carousel and most popular
     Given url is launched
     When I am on shadowandact page
     Then check whether page is loaded

@@ -1,4 +1,4 @@
-Feature: Check Whether web series page for blavity Website ShadowAndAct.com is appropriate
+Feature: Check Whether web series page for blavity Website staging.ShadowAndAct.com is appropriate
 
   Scenario: To check whether WEB SERIES page is as required
       Given url is launched

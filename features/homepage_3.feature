@@ -1,6 +1,6 @@
-Feature: Home Page Verification for ShadowAndAct.com for originals , count comaprison and other trending
+Feature: Home Page Verification for staging.ShadowAndAct.com for originals , count comaprison and other trending
  
-  Scenario: Verify the different sections of the Home Page for ShadowAndAct.com for originals , count comaprison and other trending
+  Scenario: Verify the different sections of the Home Page for staging.ShadowAndAct.com for originals , count comaprison and other trending
     Given url is launched
     When I am on shadowandact page
     Then check whether page is loaded
