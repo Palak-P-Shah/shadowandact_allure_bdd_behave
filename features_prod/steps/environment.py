@@ -12,7 +12,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 
 options = webdriver.ChromeOptions()
-# change this to True
+# change this to True for desktop windows code execution
 # options.headless = False
 options.headless = True
 options.add_argument('--no-sandbox')
@@ -28,7 +28,7 @@ options.add_argument('user-agent={0}'.format(user_agent))
 # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # driver = webdriver.Chrome(ChromeDriverManager().install()) for blavity deployment
 # for desktop execution
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+# driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # for linux debian
 # tried this getting error as "The process started from chrome location /usr/bin/chromium is no longer running,
@@ -36,7 +36,7 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
 
 # for linux debian working on debian 10 linux.
-# driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
+driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
 
 url_name = "https://shadowandact.com/"
 
