@@ -79,19 +79,67 @@ def step_impl(context):
     post_page_load_pop_up()
 
 
+@then('verify whether navigation bar is present and displayed')
+def step_impl(context):
+    verify_nav_bar_presence()
+
+
 @then('verify whether nav bar is present and displayed')
 def step_impl(context):
     verify_nav_bar_presence()
 
 
-@then('verify whether Rising Awards page is as required')
+@then('navigate to the Rising Awards page')
 def step_impl(context):
     verify_rising_awards_page_launch()
+
+
+@then('verify main image of Rising Awards page with 3 slide dots having relevant information regarding Rising Awards being displayed')
+def step_impl(context):
+    verify_header_section()
+
+
+@then('verify on Rising Awards page, each tab of Behind The Scenes, Actors, Executives, Creators, Game-Changer having video , images and information provided')
+def step_impl(context):
+    verify_categories_grid()
+
+
+@then('verify on Rising Awards page, S&A RISING AWARDS section having videos working with information provided')
+def step_impl(context):
+    verify_s_and_a_rising_awards()
+
+
+@then('verify on Rising Awards page, S&A FEATURED ARTICLES section having images present and links working with information provided, and back to top button')
+def step_impl(context):
+    verify_s_and_a_featured_articles()
 
 
 @then('verify links arrow buttons do work in carousel')
 def step_impl(context):
     verify_carousel_articles_and_arrows()
+
+
+@then('verify each article link, their details and arrow buttons do work as expected in carousel')
+def step_impl(context):
+    verify_carousel_articles_and_arrows()
+
+
+@then('verify each article details and links for The Latest section')
+def step_impl(context):
+    verify_latest_section()
+
+
+@then('verify number of articles before and after click of Load More Stories button in The Latest section, also verify the links to the articles works as expected')
+def step_impl(context):
+    verify_load_more_the_latest()
+    verify_latest_section()
+
+
+@then('verify number of articles before and after click of Load More Stories button(the second time when clicked) in The Latest section, also verify initial link of the article, after clicking load more twice do work as expected')
+def step_impl(context):
+    verify_load_more_the_latest()
+    verify_load_more_the_latest()
+    verify_latest_section()
 
 
 @then('verify latest section')
@@ -114,12 +162,17 @@ def step_impl(context):
     verify_most_popular()
 
 
+@then('verify each article of side bar most popular section')
+def step_impl(context):
+    verify_most_popular()
+
+
 @then('verify shadowandact originals section')
 def step_impl(context):
     verify_shadow_and_act_originals()
 
 
-@then('verify post click count comparison under shadowandact originals')
+@then('verify pre and post click see more originals button count comparison of articles under shadowandact originals')
 def step_impl(context):
     verify_post_click_more_originals_number_comparison()
 
@@ -147,6 +200,76 @@ def step_impl(context):
 @then('navigate to the Film page')
 def step_impl(context):
     verify_particular_page("FILM")
+
+
+@then('navigate to the Television page')
+def step_impl(context):
+    verify_particular_page("TELEVISION")
+
+
+@then('verify if all the article links are working as expected on the Television page')
+def step_impl(context):
+    verify_each_article("TELEVISION", "Television")
+
+
+@then('verify for Television page, if the Load More stories button work as expected, also verify the links to the articles works as expected')
+def step_impl(context):
+    verify_number_of_articles("Television")
+    verify_each_article("TELEVISION", "Television")
+
+
+@then('verify for Television page, if the Load More stories button work as expected (the second time when clicked), also verify initial link of the article, after clicking load more twice do work as expected')
+def step_impl(context):
+    verify_number_of_articles("Television")
+    verify_number_of_articles("Television")
+    verify_each_article("TELEVISION", "Television")
+
+
+@then('navigate to the Web Series page')
+def step_impl(context):
+    verify_particular_page("WEB SERIES")
+
+
+@then('verify if all the article links are working as expected on the Web Series page')
+def step_impl(context):
+    verify_each_article("WEB SERIES", "Web Series")
+
+
+@then('verify for Web Series page, if the Load More stories button work as expected, also verify the links to the articles works as expected')
+def step_impl(context):
+    verify_number_of_articles("Web Series")
+    verify_each_article("WEB SERIES", "Web Series")
+
+
+@then('verify for Web Series page, if the Load More stories button work as expected (the second time when clicked), also verify initial link of the article, after clicking load more twice do work as expected')
+def step_impl(context):
+    verify_number_of_articles("Web Series")
+    verify_number_of_articles("Web Series")
+    verify_each_article("WEB SERIES", "Web Series")
+
+
+@then('navigate to the Interviews page')
+def step_impl(context):
+    verify_particular_page("INTERVIEWS")
+
+
+@then('verify if all the article links are working as expected on the Interviews page')
+def step_impl(context):
+    verify_each_article("INTERVIEWS", "Interviews")
+
+
+@then('verify for Interviews page, if the Load More stories button work as expected, also verify the links to the articles works as expected')
+def step_impl(context):
+    verify_number_of_articles("Interviews")
+    verify_each_article("INTERVIEWS", "Interviews")
+
+
+@then('verify for Interviews page, if the Load More stories button work as expected (the second time when clicked), also verify initial link of the article, after clicking load more twice do work as expected')
+def step_impl(context):
+    verify_number_of_articles("Interviews")
+    verify_number_of_articles("Interviews")
+    verify_each_article("INTERVIEWS", "Interviews")
+
 
 
 @then('verify if all the article links are working as expected on the Film page')

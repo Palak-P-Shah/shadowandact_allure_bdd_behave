@@ -43,6 +43,8 @@ def verify_number_of_articles(temp_variable):
     assert len(temp_number) > 0, "Articles are not present for " + temp_variable + " page"
     load_more_stories_button = driver.find_element(By.XPATH, "//button[normalize-space()='Load More Stories']")
     load_more_stories_button.click()
+    if temp_variable == "Interviews":
+        time.sleep(2)
     time.sleep(2)
     WebDriverWait(driver, 40).until(ec.presence_of_element_located((
       By.XPATH, "//button[normalize-space()='Load More Stories']")))
@@ -145,7 +147,7 @@ def verify_each_article(page, temp_variable):
         print("deduced string is :", compare_1)
         print("text string is :", compare_2)
         assert compare_1 == compare_2, \
-            "for 'Other Trending Black News' section, for :" + article + ": article , title text does not match"
+            "for shadowandact.com in articles of the "+page+", for :" + article + ": article , title text does not match"
         driver.back()
         temp_title = temp_variable+" - SHADOW & ACT"
         print("title is :- ", temp_title)
@@ -227,3 +229,12 @@ def verify_final_article(page, temp_variable):
 # # verify_particular_page("TELEVISION")
 # verify_particular_page("WEB SERIES")
 # verify_particular_page("INTERVIEWS")
+# verify_particular_page("INTERVIEWS")
+# verify_each_article("INTERVIEWS", "Interviews")
+# # to click load more 1 time
+# verify_number_of_articles("Film")
+# verify_each_article("INTERVIEWS", "Interviews")
+# # to click load more 2 times
+# verify_number_of_articles("Interviews")
+# verify_number_of_articles("Interviews")
+# verify_each_article("INTERVIEWS", "Interviews")
