@@ -22,6 +22,7 @@ def verify_carousel_articles_and_arrows():
     if right_click_button.is_displayed() and right_click_button.is_displayed():
         print("both right and left click buttons are displayed on this page")
     count = 1
+    time.sleep(2)
     while count < (number_of_entries+1):
         # time.sleep(2)
         temp_string = str(count + 1)

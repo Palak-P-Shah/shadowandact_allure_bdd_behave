@@ -43,7 +43,7 @@ def verify_number_of_articles(temp_variable):
     assert len(temp_number) > 0, "Articles are not present for " + temp_variable + " page"
     load_more_stories_button = driver.find_element(By.XPATH, "//button[normalize-space()='Load More Stories']")
     load_more_stories_button.click()
-    if temp_variable == "Interviews":
+    if temp_variable == "Interviews" or temp_variable == "Web Series":
         time.sleep(2)
     time.sleep(2)
     WebDriverWait(driver, 40).until(ec.presence_of_element_located((
