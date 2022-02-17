@@ -22,10 +22,10 @@ def verify_particular_page(page):
     assert driver.title == temp_variable+" - SHADOW & ACT", "title of the page "+page+" does not match"
     page_header = driver.find_element(By.XPATH, "//h1[normalize-space()='"+temp_variable+"']")
     assert page_header.is_displayed(), "header of the page "+temp_variable+" is not displayed"
-    verify_each_article(page, temp_variable)
-    verify_number_of_articles(temp_variable)
-    verify_final_article(page, temp_variable)
-    verify_footer_exists(page)
+    # verify_each_article(page, temp_variable)
+    # verify_number_of_articles(temp_variable)
+    # verify_final_article(page, temp_variable)
+    # verify_footer_exists(page)
 
 
 def verify_footer_exists(page):
@@ -43,6 +43,8 @@ def verify_number_of_articles(temp_variable):
     assert len(temp_number) > 0, "Articles are not present for " + temp_variable + " page"
     load_more_stories_button = driver.find_element(By.XPATH, "//button[normalize-space()='Load More Stories']")
     load_more_stories_button.click()
+    if temp_variable == "Interviews" or temp_variable == "Web Series":
+        time.sleep(2)
     time.sleep(2)
     WebDriverWait(driver, 40).until(ec.presence_of_element_located((
       By.XPATH, "//button[normalize-space()='Load More Stories']")))
@@ -54,14 +56,45 @@ def verify_number_of_articles(temp_variable):
         "Articles are not appended post 'Load More Stories' button click for " + temp_variable + " page"
 
 
+def verify_load_more(number):
+    WebDriverWait(driver, 40).until(ec.presence_of_element_located((
+      By.XPATH, "//button[normalize-space()='Load More Stories']")))
+    load_more_stories_button = driver.find_element(By.XPATH, "//button[normalize-space()='Load More Stories']")
+    if number == 12:
+        print("when number of articles are :- ", number)
+        actions = ActionChains(driver)
+        actions.move_to_element(load_more_stories_button).perform()
+    if number == 18:
+        print("when number of articles are :- ", number)
+        time.sleep(2)
+        actions = ActionChains(driver)
+        actions.move_to_element(load_more_stories_button).perform()
+        # time.sleep(1)
+        # driver.execute_script("arguments[0].scrollIntoView();", load_more_stories_button)
+    load_more_stories_button.click()
+    WebDriverWait(driver, 40).until(ec.presence_of_element_located((
+      By.XPATH, "//button[normalize-space()='Load More Stories']")))
+
+
 def verify_each_article(page, temp_variable):
     print("inside function verify_each_article")
     temp_number = driver.find_elements(By.XPATH, "//div[@class='article-card d-flex flex-column col-4 col-desktop-4']")
     print("number of articles are :- ", len(temp_number))
     assert len(temp_number) > 0, "Articles are not present for "+temp_variable+" page"
-    count = 0
+    if len(temp_number) == 6:
+        count = 0
+    elif len(temp_number) == 12:
+        count = 6
+    elif len(temp_number) == 18:
+        count = 12
     time.sleep(5)
     while count < len(temp_number):
+        if len(temp_number) == 12 and count != 6:
+            verify_load_more(len(temp_number))
+        # elif len(temp_number) == 18 and count != 12:
+        #     verify_load_more(len(temp_number))
+        #     # time.sleep(1)
+        #     verify_load_more(len(temp_number))
         temp_string = str(count + 1)
         print("count : ", count)
         print("tempString : ", temp_string)
@@ -114,12 +147,14 @@ def verify_each_article(page, temp_variable):
         print("deduced string is :", compare_1)
         print("text string is :", compare_2)
         assert compare_1 == compare_2, \
-            "for 'Other Trending Black News' section, for :" + article + ": article , title text does not match"
+            "for shadowandact.com in articles of the "+page+", for :" + article + ": article , title text does not match"
         driver.back()
         temp_title = temp_variable+" - SHADOW & ACT"
         print("title is :- ", temp_title)
         WebDriverWait(driver, 40).until(ec.title_is(temp_title))
         count += 1
+        if len(temp_number) == 18:
+            break
 
 
 def verify_final_article(page, temp_variable):
@@ -181,7 +216,25 @@ def verify_final_article(page, temp_variable):
 # environment()
 # page_load()
 # post_page_load_pop_up()
-# # verify_particular_page("TELEVISION")
 # verify_particular_page("FILM")
+# verify_each_article("FILM", "Film")
+# # to click load more 1 time
+# verify_number_of_articles("Film")
+# verify_each_article("FILM", "Film")
+# # to click load more 2 times
+# verify_number_of_articles("Film")
+# verify_number_of_articles("Film")
+# verify_each_article("FILM", "Film")
+# driver.quit()
+# # verify_particular_page("TELEVISION")
 # verify_particular_page("WEB SERIES")
 # verify_particular_page("INTERVIEWS")
+# verify_particular_page("INTERVIEWS")
+# verify_each_article("INTERVIEWS", "Interviews")
+# # to click load more 1 time
+# verify_number_of_articles("Film")
+# verify_each_article("INTERVIEWS", "Interviews")
+# # to click load more 2 times
+# verify_number_of_articles("Interviews")
+# verify_number_of_articles("Interviews")
+# verify_each_article("INTERVIEWS", "Interviews")

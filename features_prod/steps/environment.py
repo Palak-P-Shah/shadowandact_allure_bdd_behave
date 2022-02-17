@@ -12,8 +12,9 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 
 options = webdriver.ChromeOptions()
-# change this to True for desktop windows code execution
+# uncomment this line below for desktop windows code execution
 # options.headless = False
+# comment these 2 lines below for desktop windows execution
 options.headless = True
 options.add_argument('--no-sandbox')
 options.add_argument("--disable-notifications")

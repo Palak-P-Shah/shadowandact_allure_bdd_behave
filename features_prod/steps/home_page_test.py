@@ -22,6 +22,7 @@ def verify_carousel_articles_and_arrows():
     if right_click_button.is_displayed() and right_click_button.is_displayed():
         print("both right and left click buttons are displayed on this page")
     count = 1
+    time.sleep(2)
     while count < (number_of_entries+1):
         # time.sleep(2)
         temp_string = str(count + 1)
@@ -97,6 +98,26 @@ def verify_carousel_articles_and_arrows():
         count += 1
 
 
+def verify_load_more(number):
+    WebDriverWait(driver, 40).until(ec.presence_of_element_located((
+      By.XPATH, "//button[normalize-space()='load more stories']")))
+    load_more_stories_button = driver.find_element(By.XPATH, "//button[normalize-space()='load more stories']")
+    if number == 8:
+        print("when number of articles are :- ", number)
+        actions = ActionChains(driver)
+        actions.move_to_element(load_more_stories_button).perform()
+    if number == 12:
+        print("when number of articles are :- ", number)
+        time.sleep(2)
+        actions = ActionChains(driver)
+        actions.move_to_element(load_more_stories_button).perform()
+        # time.sleep(1)
+        # driver.execute_script("arguments[0].scrollIntoView();", load_more_stories_button)
+    load_more_stories_button.click()
+    WebDriverWait(driver, 40).until(ec.presence_of_element_located((
+      By.XPATH, "//button[normalize-space()='load more stories']")))
+
+
 def verify_latest_section():
     print("inside function verify_latest_section")
     actions = ActionChains(driver)
@@ -109,8 +130,16 @@ def verify_latest_section():
       "//div[@class='article-card d-flex flex-column col-4 col-desktop-6']")
     print("number of articles in 'The Latest' section are", len(temp_articles_in_latest))
     assert len(temp_articles_in_latest) > 0, "articles are not present under 'The Latest' section."
-    count = 0
+    if len(temp_articles_in_latest) == 4:
+        count = 0
+    elif len(temp_articles_in_latest) == 8:
+        count = 4
+    elif len(temp_articles_in_latest) == 12:
+        count = 8
+        time.sleep(2)
     while count < len(temp_articles_in_latest):
+        if len(temp_articles_in_latest) == 8 and count != 4:
+            verify_load_more(len(temp_articles_in_latest))
         temp_string = str(count + 1)
         print("count : ", count)
         print("tempString : ", temp_string)
@@ -123,6 +152,7 @@ def verify_latest_section():
         article_heading_img = driver.find_element(By.XPATH, temp_xpath_img)
         article = article_heading_img.get_attribute("title")
         print("article is :", article)
+        time.sleep(1)
         image_present = driver.execute_script(
           "return arguments[0].complete && typeof arguments[0].naturalWidth "
           "!= \"undefined\" && arguments[0].naturalWidth > 0",
@@ -167,8 +197,10 @@ def verify_latest_section():
         WebDriverWait(driver, 40).until(ec.title_is("SHADOW & ACT"))
         time.sleep(1)
         count += 1
-    verify_load_more(len(temp_articles_in_latest))
-    verify_post_click_load_more()
+        if len(temp_articles_in_latest) == 12:
+            break
+    # verify_load_more(len(temp_articles_in_latest))
+    # verify_post_click_load_more()
 
 
 def verify_post_click_load_more():
@@ -228,8 +260,12 @@ def verify_post_click_load_more():
     WebDriverWait(driver, 40).until(ec.title_is("SHADOW & ACT"))
 
 
-def verify_load_more(number_before_click):
+def verify_load_more_the_latest():
     print("function called verify_load_more")
+    temp_articles = driver.find_elements(
+      By.XPATH, "//div[@class='article-card d-flex flex-column col-4 col-desktop-6']")
+    print("number of articles before load more buttons click", len(temp_articles))
+    number_before_click = len(temp_articles)
     load_more_articles = driver.find_element(By.XPATH, "//button[contains(text(),'load more stories')]")
     actions = ActionChains(driver)
     actions.move_to_element(load_more_articles).perform()

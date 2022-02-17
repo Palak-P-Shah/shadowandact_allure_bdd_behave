@@ -4,7 +4,7 @@ from common_pages import *
 from Navigation_test import *
 from rising_awards import *
 from home_page_test import *
-
+from podcast import verify_podcast
 # from allure_commons.types import AttachmentType
 
 # import allure
@@ -145,6 +145,11 @@ def step_impl(context):
 @then('verify latest section')
 def step_impl(context):
     verify_latest_section()
+
+
+@then('verify podcast links and check whether sample podcast is working')
+def step_impl(context):
+    verify_podcast()
 
 
 @then('verify side bar top article section')

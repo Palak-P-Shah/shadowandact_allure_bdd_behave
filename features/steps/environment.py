@@ -12,7 +12,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 
 options = webdriver.ChromeOptions()
-# change this to True
+# uncomment this line below for desktop windows code execution
 # options.headless = False
 # comment these 2 lines below for desktop windows execution
 options.headless = True
