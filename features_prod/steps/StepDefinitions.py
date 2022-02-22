@@ -5,6 +5,7 @@ from Navigation_test import *
 from rising_awards import *
 from home_page_test import *
 from podcast import verify_podcast
+from google_search_page import *
 # from allure_commons.types import AttachmentType
 
 # import allure
@@ -57,6 +58,11 @@ from podcast import verify_podcast
 @given('the chrome browser is launched')
 def step_impl(context):
     environment()
+
+
+@given('the browser is launched and navigating to the Google.com page')
+def step_impl(context):
+    navigate_to_google_page()
 
 
 @given('url is launched')
@@ -177,6 +183,21 @@ def step_impl(context):
     verify_shadow_and_act_originals()
 
 
+@then('navigate to the Google.com page')
+def step_impl(context):
+    navigate_to_google_page()
+
+
+@then('search for "Shadow & Act" keyword')
+def step_impl(context):
+    search_keyword("Shadow & Act")
+
+
+@then('Navigate to the Shadow&Act application page from the Google search results')
+def step_impl(context):
+    launch_app()
+
+
 @then('verify pre and post click see more originals button count comparison of articles under shadowandact originals')
 def step_impl(context):
     verify_post_click_more_originals_number_comparison()
@@ -274,7 +295,6 @@ def step_impl(context):
     verify_number_of_articles("Interviews")
     verify_number_of_articles("Interviews")
     verify_each_article("INTERVIEWS", "Interviews")
-
 
 
 @then('verify if all the article links are working as expected on the Film page')

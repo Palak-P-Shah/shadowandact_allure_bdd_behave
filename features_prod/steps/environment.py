@@ -8,15 +8,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
-
+# from google_search_page import *
 import time
 
 options = webdriver.ChromeOptions()
 # uncomment this line below for desktop windows code execution
-# options.headless = False
+options.headless = False
 # comment these 2 lines below for desktop windows execution
-options.headless = True
-options.add_argument('--no-sandbox')
+# options.headless = True
+# options.add_argument('--no-sandbox')
 options.add_argument("--disable-notifications")
 options.add_argument('--start-maximized')
 # options.add_argument("--headless")
@@ -28,8 +28,32 @@ options.add_argument('user-agent={0}'.format(user_agent))
 # use this code below to execute headless state
 # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # driver = webdriver.Chrome(ChromeDriverManager().install()) for blavity deployment
+
+"""""
+
+
+
+BROWSERSTACK_USERNAME = 'palakshah_rcAxD5'
+BROWSERSTACK_ACCESS_KEY = 's2rqmyxFs8r999bzvGXJ'
+desired_cap = {
+   'os_version': '10',
+   'resolution': '1920x1080',
+   'browser': 'Chrome',
+   'browser_version': '94.0',
+   'os': 'Windows',
+   'name': 'BStack-[Python] Smoke Test for shadowandact.com google search for shadow & act on desktop',
+   'build': 'BStack Build Number'
+}
+
+desired_cap["chromeOptions"] = {}
+desired_cap["chromeOptions"]["args"] = ["--disable-notifications"]
+driver = webdriver.Remote(
+    command_executor='https://'+BROWSERSTACK_USERNAME+':'+BROWSERSTACK_ACCESS_KEY+'@hub-cloud.browserstack.com/wd/hub',
+    desired_capabilities=desired_cap)
+"""""
+
 # for desktop execution
-# driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # for linux debian
 # tried this getting error as "The process started from chrome location /usr/bin/chromium is no longer running,
@@ -37,7 +61,7 @@ options.add_argument('user-agent={0}'.format(user_agent))
 # driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
 
 # for linux debian working on debian 10 linux.
-driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
+# driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
 
 url_name = "https://shadowandact.com/"
 
