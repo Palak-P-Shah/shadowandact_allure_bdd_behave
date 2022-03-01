@@ -13,10 +13,10 @@ import time
 
 options = webdriver.ChromeOptions()
 # uncomment this line below for desktop windows code execution
-options.headless = False
+#options.headless = False
 # comment these 2 lines below for desktop windows execution
-# options.headless = True
-# options.add_argument('--no-sandbox')
+options.headless = True
+options.add_argument('--no-sandbox')
 options.add_argument("--disable-notifications")
 options.add_argument('--start-maximized')
 # options.add_argument("--headless")
@@ -53,7 +53,7 @@ driver = webdriver.Remote(
 """""
 
 # for desktop execution
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+#driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # for linux debian
 # tried this getting error as "The process started from chrome location /usr/bin/chromium is no longer running,
@@ -61,7 +61,7 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
 
 # for linux debian working on debian 10 linux.
-# driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
+driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
 
 url_name = "https://shadowandact.com/"
 
